@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta
+    name="description"
+    content="Official support and privacy information for BLL Athletics."
+  />
+
+  <title>BLL Athletics | Beyond the Game</title>
+
+  <style>
+    :root {
+      --bg: #050507;
+      --panel: #111118;
+      --panel-soft: #17131f;
+      --purple: #7c3aed;
+      --purple-light: #a855f7;
+      --text: #ffffff;
+      --muted: #b7b7c4;
+      --border: rgba(255, 255, 255, 0.1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Helvetica,
+        Arial,
+        sans-serif;
+
+      background:
+        radial-gradient(
+          circle at top,
+          rgba(124, 58, 237, 0.22),
+          transparent 35%
+        ),
+        linear-gradient(180deg, #08070d 0%, var(--bg) 100%);
+
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1100px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      border-bottom: 1px solid var(--border);
+      background: rgba(5, 5, 7, 0.88);
+      backdrop-filter: blur(14px);
+    }
+
+    .nav {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      line-height: 1;
+    }
+
+    .brand-title {
+      font-size: 1.45rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+    }
+
+    .brand-subtitle {
+      margin-top: 7px;
+      color: var(--purple-light);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+
+    nav a {
+      color: var(--muted);
+      font-size: 0.95rem;
+      font-weight: 600;
+      transition: color 0.2s ease;
+    }
+
+    nav a:hover {
+      color: var(--text);
+    }
+
+    .hero {
+      padding: 110px 0 90px;
+      text-align: center;
+    }
+
+    .eyebrow {
+      color: var(--purple-light);
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      max-width: 850px;
+      margin: 18px auto 20px;
+      font-size: clamp(3rem, 8vw, 6rem);
+      line-height: 0.98;
+      letter-spacing: -0.04em;
+    }
+
+    .hero p {
+      max-width: 680px;
+      margin: 0 auto;
+      color: var(--muted);
+      font-size: 1.12rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 34px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 22px;
+      border-radius: 12px;
+      font-weight: 700;
+      transition:
+        transform 0.2s ease,
+        opacity 0.2s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-1px);
+    }
+
+    .button-primary {
+      background: linear-gradient(
+        135deg,
+        var(--purple),
+        var(--purple-light)
+      );
+      color: white;
+    }
+
+    .button-secondary {
+      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.04);
+      color: white;
+    }
+
+    section {
+      padding: 72px 0;
+    }
+
+    .section-title {
+      max-width: 700px;
+      margin-bottom: 30px;
+    }
+
+    .section-title h2 {
+      margin-bottom: 10px;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      letter-spacing: -0.03em;
+    }
+
+    .section-title p {
+      color: var(--muted);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      padding: 26px;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      background:
+        linear-gradient(
+          180deg,
+          rgba(124, 58, 237, 0.08),
+          rgba(255, 255, 255, 0.02)
+        ),
+        var(--panel);
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
+      font-size: 1.15rem;
+    }
+
+    .card p {
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    .legal-card {
+      max-width: 880px;
+      padding: 34px;
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      background: var(--panel);
+    }
+
+    .legal-card h3 {
+      margin-top: 26px;
+      margin-bottom: 8px;
+      font-size: 1.05rem;
+    }
+
+    .legal-card h3:first-child {
+      margin-top: 0;
+    }
+
+    .legal-card p,
+    .legal-card li {
+      color: var(--muted);
+    }
+
+    .legal-card ul {
+      margin: 10px 0 0 20px;
+    }
+
+    .legal-card a {
+      color: var(--purple-light);
+      font-weight: 700;
+    }
+
+    .support-box {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 32px;
+      border: 1px solid rgba(168, 85, 247, 0.3);
+      border-radius: 22px;
+      background:
+        linear-gradient(
+          135deg,
+          rgba(124, 58, 237, 0.18),
+          rgba(168, 85, 247, 0.06)
+        );
+    }
+
+    .support-box p {
+      margin-top: 6px;
+      color: var(--muted);
+    }
+
+    footer {
+      padding: 44px 0;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      text-align: center;
+      font-size: 0.9rem;
+    }
+
+    footer strong {
+      color: white;
+    }
+
+    @media (max-width: 800px) {
+      .nav {
+        flex-direction: column;
+        justify-content: center;
+        padding: 18px 0;
+      }
+
+      nav ul {
+        gap: 18px;
+      }
+
+      .hero {
+        padding-top: 80px;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .support-box {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#home">
+        <span class="brand-title">BLL ATHLETICS</span>
+        <span class="brand-subtitle">Beyond the Game</span>
+      </a>
+
+      <nav>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#support">Support</a></li>
+          <li><a href="#privacy">Privacy Policy</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container">
+        <div class="eyebrow">BLL Athletics</div>
+
+        <h1>Beyond the Game.</h1>
+
+        <p>
+          BLL Athletics helps athletic programs stay organized,
+          connected, prepared, and focused on player development.
+        </p>
+
+        <div class="hero-actions">
+          <a class="button button-primary" href="#support">
+            Get Support
+          </a>
+
+          <a class="button button-secondary" href="#privacy">
+            View Privacy Policy
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-title">
+          <h2>Built for modern athletic programs.</h2>
+
+          <p>
+            One place for the everyday tools coaches and athletes
+            need to stay connected and prepared.
+          </p>
+        </div>
+
+        <div class="grid">
+          <div class="card">
+            <h3>Team Organization</h3>
+            <p>
+              Keep practices, matches, meetings, lifts, and team
+              events organized in one place.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Communication</h3>
+            <p>
+              Help coaches and athletes stay connected with team,
+              group, and individual communication.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Player Development</h3>
+            <p>
+              Support player wellness, culture, readiness, and
+              development throughout the season.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="support">
+      <div class="container">
+        <div class="section-title">
+          <div class="eyebrow">Support</div>
+
+          <h2>Need help with BLL Athletics?</h2>
+
+          <p>
+            We’re here to help with account access, team features,
+            scheduling, messaging, wellness tools, technical issues,
+            and general feedback.
+          </p>
+        </div>
+
+        <div class="support-box">
+          <div>
+            <h3>Contact BLL Athletics Support</h3>
+
+            <p>
+              Send us an email and include a description of the issue
+              you’re experiencing.
+            </p>
+          </div>
+
+          <a
+            class="button button-primary"
+            href="mailto:bllathleticssupport@gmail.com"
+          >
+            Email Support
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="privacy">
+      <div class="container">
+        <div class="section-title">
+          <div class="eyebrow">Privacy</div>
+
+          <h2>Privacy Policy</h2>
+
+          <p>Last updated: August 30, 2026</p>
+        </div>
+
+        <div class="legal-card">
+          <h3>Information We Collect</h3>
+
+          <p>
+            BLL Athletics may collect information that users provide
+            when creating or using an account, including names, email
+            addresses, team information, player profile information,
+            wellness information, messages, schedules, and other
+            content entered into the application.
+          </p>
+
+          <h3>How We Use Information</h3>
+
+          <p>
+            Information is used to provide and improve BLL Athletics,
+            operate team management features, support communication,
+            manage schedules, provide wellness and player development
+            functionality, maintain account security, and respond to
+            support requests.
+          </p>
+
+          <h3>Service Providers</h3>
+
+          <p>
+            BLL Athletics may use third-party service providers to
+            operate portions of the application, including services
+            used for authentication, database storage, notifications,
+            application infrastructure, and related functionality.
+            These providers may process information as necessary to
+            deliver their services.
+          </p>
+
+          <h3>Data Sharing</h3>
+
+          <p>
+            BLL Athletics does not sell personal information.
+            Information may be shared with service providers when
+            necessary to operate the application, comply with legal
+            obligations, protect users or the service, or when a user
+            directs or authorizes the sharing.
+          </p>
+
+          <h3>Data Retention</h3>
+
+          <p>
+            Information may be retained for as long as necessary to
+            provide the service, maintain legitimate operational
+            records, meet legal obligations, resolve disputes, and
+            enforce agreements.
+          </p>
+
+          <h3>Account and Data Deletion</h3>
+
+          <p>
+            Users may request account or personal data deletion by
+            contacting BLL Athletics Support at
+            <a href="mailto:bllathleticssupport@gmail.com">
+              bllathleticssupport@gmail.com
+            </a>.
+            Requests will be reviewed and processed subject to
+            applicable legal and operational requirements.
+          </p>
+
+          <h3>Security</h3>
+
+          <p>
+            Reasonable administrative and technical measures are used
+            to help protect user information. However, no method of
+            electronic transmission or storage can be guaranteed to be
+            completely secure.
+          </p>
+
+          <h3>Children's Privacy</h3>
+
+          <p>
+            BLL Athletics is intended for authorized members of
+            athletic programs. Organizations using the application
+            are responsible for ensuring appropriate authorization
+            and consent when required by applicable law.
+          </p>
+
+          <h3>Changes to This Policy</h3>
+
+          <p>
+            This Privacy Policy may be updated periodically. Any
+            updated version will be posted on this page with a revised
+            effective date.
+          </p>
+
+          <h3>Contact Us</h3>
+
+          <p>
+            Questions about this Privacy Policy or requests related to
+            personal information can be sent to
+            <a href="mailto:bllathleticssupport@gmail.com">
+              bllathleticssupport@gmail.com
+            </a>.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <strong>BLL Athletics</strong> · Beyond the Game<br />
+      © 2026 BLL Athletics. All rights reserved.
+    </div>
+  </footer>
+</body>
+</html>
